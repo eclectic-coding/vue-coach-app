@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
 import CoachesList from '@/views/CoachesList';
-import CoachesDetail from '@/views/CoachesDetail';
 import NotFound from '@/views/NotFound';
 
 function lazyload(view) {
@@ -12,7 +11,7 @@ const routes = [
   { path: '/', redirect: '/coaches' },
   { path: '/coaches', name: 'Coaches', component: CoachesList },
   {
-    path: '/coaches/:id', name: 'Coach', component: CoachesDetail,
+    path: '/coaches/:id', name: 'Coach', component: lazyload('CoachesDetail'),
     children: [
       {
         path: 'contact', component: lazyload('ContactCoaches')
