@@ -1,6 +1,7 @@
-import { createRouter, createWebHashHistory } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router';
 
 import CoachesList from '@/views/CoachesList';
+import CoachesDetail from '@/views/CoachesDetail';
 import NotFound from '@/views/NotFound';
 
 function lazyload(view) {
@@ -11,7 +12,7 @@ const routes = [
   { path: '/', redirect: '/coaches' },
   { path: '/coaches', name: 'Coaches', component: CoachesList },
   {
-    path: '/coaches:id', name: 'Coach', component: lazyload('CoachesList'),
+    path: '/coaches/:id', name: 'Coach', component: CoachesDetail,
     children: [
       {
         path: 'contact', component: lazyload('ContactCoaches')
@@ -19,12 +20,12 @@ const routes = [
     ]
   },
   { path: '/register', name: 'Register', component: lazyload('RequestsReceived') },
-  { path: '/requests', name: 'Register', component: lazyload('RequestsReceived') },
+  { path: '/requests', name: 'Requests', component: lazyload('RequestsReceived') },
   { path: '/:notFound(.*)', component: NotFound }
 ];
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes
 });
 

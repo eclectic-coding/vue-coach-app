@@ -1,5 +1,5 @@
 <template>
-test
+CONTACT A COACH
 </template>
 
 <script>
